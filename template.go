@@ -62,13 +62,13 @@ func (t *Template) Generate(out billy.Filesystem) error {
 		}
 		bs, err := io.ReadAll(templateFile)
 		if err != nil {
-			return err
+			return fmt.Errorf("cannot read file. path: %s: %w", path, err)
 		}
 
 		var b bytes.Buffer
 		err = generate(path, env, &b)
 		if err != nil {
-			return err
+			return fmt.Errorf("cannot expand path %s: %w", path, err)
 		}
 
 		outPath := b.String()
@@ -79,7 +79,11 @@ func (t *Template) Generate(out billy.Filesystem) error {
 		}
 		defer f.Close()
 
-		return generate(string(bs), env, f)
+		err = generate(string(bs), env, f)
+		if err != nil {
+			return fmt.Errorf("cannot generate content from template. template:%s, output: %s, : %w", path, outPath, err)
+		}
+		return nil
 	})
 }
 
