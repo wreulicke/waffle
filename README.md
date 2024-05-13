@@ -6,4 +6,5 @@ Scaffolding tool.
 
 ```bash
 $ waffle -t testdata -o test
+> What is input: hoge
 ```
