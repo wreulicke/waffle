@@ -1,4 +1,3 @@
 {
-  "name": "Test",
-  "input": "{{ input "What is input?" }}"
+  "name": "Test"
 }

@@ -5,6 +5,6 @@ Scaffolding tool.
 ## Usage
 
 ```bash
-$ waffle -t testdata -o test
+$ waffle -t example -o test
 > What is input?: hoge
 ```
